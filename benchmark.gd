@@ -10,26 +10,26 @@ extends Node
 func _ready():
 	var mucho_texto = "Comenzando el benchmark... \n\n"
 	# test de C#
-	var startC = OS.get_system_time_msecs()
+	var startC = OS.get_ticks_usec()
 	
 	for _i in range(50000):
 		CSharp_.cacafuti()
 	
-	var endC = OS.get_system_time_msecs()
+	var endC = OS.get_ticks_usec()
 	var elapsedC = endC-startC
 	
-	mucho_texto += "El proceso en C# ha tardado: " + str(elapsedC) + " milisegundos\n\n"
+	mucho_texto += "El proceso en C# ha tardado: " + str(elapsedC) + " microsegundos\n\n"
 	
 	# test de GDScript
-	startC = OS.get_system_time_msecs()
+	startC = OS.get_ticks_usec()
 	
 	for _i in range(50000):
 		GDScript_.cacafuti()
 	
-	endC = OS.get_system_time_msecs()
+	endC = OS.get_ticks_usec()
 	elapsedC = endC-startC
 	
-	mucho_texto += "El proceso en GDScript ha tardado: " + str(elapsedC) + " milisegundos\n\n"
+	mucho_texto += "El proceso en GDScript ha tardado: " + str(elapsedC) + " microsegundos\n\n"
 	
 	# imprimiendo el texto
 	get_node("RichTextLabel").text = mucho_texto
